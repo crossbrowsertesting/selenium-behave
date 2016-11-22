@@ -4,8 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import requests
 import subprocess
-import os
-import time
 
 username = "you@yourdomain.com"
 authkey  = "yourauthkey"
@@ -24,9 +22,9 @@ def before_feature(context, feature):
     context.api_session = requests.Session()
     context.api_session.auth = (username, authkey)
 
-    cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin" 
+    # cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin" 
     
-    context.tunnel_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+    # context.tunnel_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
 
@@ -37,5 +35,5 @@ def before_feature(context, feature):
     
 def after_feature(context, feature):
     context.driver.quit() 
-    subprocess.Popen.terminate(context.tunnel_proc)
+    # subprocess.Popen.terminate(context.tunnel_proc)
     
