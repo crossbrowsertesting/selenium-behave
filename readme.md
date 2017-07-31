@@ -57,9 +57,9 @@ def before_feature(context, feature):
     caps = {}
     caps['name'] = 'Behave Example'
     caps['build'] = '1.0'
-    caps['browser_api_name'] = "Chrome53"
+    caps['browser_api_name'] = "chrome-latest"          # requests latest chrome, ff-latest
     caps['os_api_name'] = "Win10"
-    caps['screen_resolution'] = '1024x768'
+    caps['screen_resolution'] = '1366x768'
     caps['record_video'] = 'true'
     caps['record_network'] = 'true'
     caps['take_snapshot'] = 'true'
