@@ -11,8 +11,8 @@ def before_feature(context, feature):
     caps = {}
     caps['name'] = 'Behave Example'
     caps['build'] = '1.0'
-    caps['browser_api_name'] = "chrome-latest"
-    caps['os_api_name'] = "Win10"
+    caps['browserName'] = "Chrome"      # pulls the latest version of Chrome by default
+    caps['platform'] = "Windows 10"     # to specify a version, add caps['version'] = "desired version"
     caps['screen_resolution'] = '1366x768'
     caps['record_video'] = 'true'
     caps['record_network'] = 'true'
