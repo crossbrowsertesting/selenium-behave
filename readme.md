@@ -61,15 +61,15 @@ def before_feature(context, feature):
     caps['platform'] = "Windows 10"     # to specify a version, add caps['version'] = "desired version"
     caps['screen_resolution'] = '1366x768'
     caps['record_video'] = 'true'
-    caps['record_network'] = 'true'
+    caps['record_network'] = 'false'
     caps['take_snapshot'] = 'true'
 
 
     context.api_session = requests.Session()
     context.api_session.auth = (username, authkey)
 
-    # cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin" 
-    
+    # cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin"
+
     # context.tunnel_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
@@ -78,9 +78,9 @@ def before_feature(context, feature):
         desired_capabilities=caps,
         command_executor="http://%s:%s@hub.crossbrowsertesting.com:80/wd/hub"%(username, authkey)
     )
-    
+
 def after_feature(context, feature):
-    context.driver.quit() 
+    context.driver.quit()
     # subprocess.Popen.terminate(context.tunnel_proc)
 ```
 
@@ -129,6 +129,6 @@ def set_score(context, test_result):
 
 ```
 
-You should note that we use, the Given-When-Then prefixes before every corresponding function. Steps are narrowed down to individual functions and the whole feature acts as a single unit test. At the end we set the score to the final value of our score variable, and our test is complete. 
+You should note that we use, the Given-When-Then prefixes before every corresponding function. Steps are narrowed down to individual functions and the whole feature acts as a single unit test. At the end we set the score to the final value of our score variable, and our test is complete.
 
 This is just the beginning of what you can do with Behave and Selenium! There's really no limits to what's possible with Selenium, and Behave makes it much easier, especially if you're working with QA's that aren't programmers. If you have trouble running your tests with our service, feel free to [get in touch](mailto: info@crossbrowsertesting.com).
