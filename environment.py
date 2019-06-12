@@ -15,15 +15,15 @@ def before_feature(context, feature):
     caps['platform'] = "Windows 10"     # to specify a version, add caps['version'] = "desired version"
     caps['screen_resolution'] = '1366x768'
     caps['record_video'] = 'true'
-    caps['record_network'] = 'true'
+    caps['record_network'] = 'false'
     caps['take_snapshot'] = 'true'
 
 
     context.api_session = requests.Session()
     context.api_session.auth = (username, authkey)
 
-    # cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin" 
-    
+    # cmd = "cbt_tunnels --username " + username + " --authkey " + authkey + " --ready tunnel_ready asadmin"
+
     # context.tunnel_proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
@@ -32,8 +32,7 @@ def before_feature(context, feature):
         desired_capabilities=caps,
         command_executor="http://%s:%s@hub.crossbrowsertesting.com:80/wd/hub"%(username, authkey)
     )
-    
+
 def after_feature(context, feature):
-    context.driver.quit() 
+    context.driver.quit()
     # subprocess.Popen.terminate(context.tunnel_proc)
-    
